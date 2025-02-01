@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Attendance Form</h2>
+        
+        <!-- Attendance Form -->
+        <form id="attendance-form">
+            <div class="input-group">
+                <input type="text" id="student-name" placeholder=" " required>
+                <label for="student-name">Student Name</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="student-email" placeholder=" " required>
+                <label for="student-email">Email Address</label>
+            </div>
+
+            <button type="submit">Add Student</button>
+        </form>
+
+        <!-- Attendance Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Email Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-table">
+                <!-- Student entries will appear here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let studentId = 1; // ID counter
+        const form = document.getElementById("attendance-form");
+        const tableBody = document.getElementById("attendance-table");
+
+        // Handle form submission
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get input values
+            const name = document.getElementById("student-name").value.trim();
+            const email = document.getElementById("student-email").value.trim();
+
+            // Add new row to table
+            if (name && email) {
+                addStudentToTable(studentId, name, email);
+                studentId++;
+                form.reset(); // Clear form after submission
+            }
+        });
+
+        // Function to add a student to the table
+        function addStudentToTable(id, name, email) {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${id}</td>
+                <td>${name}</td>
+                <td>${email}</td>
+                <td>
+                    <button class="action-btn edit" onclick="editStudent(this)">Update</button>
+                    <button class="action-btn delete" onclick="deleteStudent(this)">Delete</button>
+                </td>
+            `;
+
+            tableBody.appendChild(row);
+        }
+
+        // Function to delete a student
+        function deleteStudent(button) {
+            button.parentElement.parentElement.remove();
+        }
+
+        // Function to update student details
+        function editStudent(button) {
+            const row = button.parentElement.parentElement;
+            const name = row.cells[1].innerText;
+            const email = row.cells[2].innerText;
+
+            document.getElementById("student-name").value = name;
+            document.getElementById("student-email").value = email;
+
+            // Remove the existing row after selecting for update
+            row.remove();
+        }
+    </script>
+
+</body>
+</html>

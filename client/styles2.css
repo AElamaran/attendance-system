@@ -1,0 +1,128 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Centering the form */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    background: white;
+    padding: 40px; /* Increased padding */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 500px; /* Increased max-width */
+}
+
+/* Headings */
+h2 {
+    margin-bottom: 25px; /* Slightly increased margin */
+    font-weight: 600;
+    color: #333;
+    font-size: 28px; /* Increased font size */
+}
+
+/* Input Group */
+.input-group {
+    position: relative;
+    margin: 20px 0; /* Increased margin */
+}
+
+input {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 18px; /* Increased font size */
+    transition: 0.3s;
+    outline: none;
+}
+
+input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+}
+
+/* Floating Labels */
+.input-group label {
+    position: absolute;
+    top: 16px; /* Adjusted for larger input */
+    left: 15px; /* Adjusted for larger input */
+    font-size: 18px; /* Increased font size */
+    color: #aaa;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: -12px; /* Adjusted for larger input */
+    left: 12px; /* Adjusted for larger input */
+    font-size: 14px; /* Adjusted font size */
+    color: #667eea;
+    background: white;
+    padding: 0 5px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    background: #667eea;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px; /* Increased font size */
+    border-radius: 6px;
+    transition: 0.3s;
+    margin-top: 20px; /* Added margin */
+}
+
+button:hover {
+    background: #5563c1;
+}
+
+/* Message */
+.message {
+    margin-top: 20px; /* Increased margin */
+    font-size: 16px; /* Increased font size */
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 30px; /* Adjusted padding for smaller screens */
+    }
+
+    h2 {
+        font-size: 24px; /* Adjusted font size for smaller screens */
+    }
+
+    input, button {
+        font-size: 16px; /* Adjusted font size for smaller screens */
+        padding: 12px; /* Adjusted padding for smaller screens */
+    }
+
+    .message {
+        font-size: 14px; /* Adjusted font size for smaller screens */
+    }
+}

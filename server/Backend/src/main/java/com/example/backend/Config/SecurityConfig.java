@@ -23,17 +23,23 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Autowired
+    private JwtFilter jwtFilter;
+
     @Bean
     public SecurityFilterChain securityfilterchain(HttpSecurity htp) throws Exception {
 
-        htp.csrf(Customizer -> Customizer.disable());
-        htp.authorizeHttpRequests(request -> request
+        htp.csrf(Customizer->Customizer.disable());
+        htp.authorizeHttpRequests(request->request
+                .requestMatchers("/login")
+                .permitAll()
                 .anyRequest().authenticated());
 
 
 //        htp.formLogin(Customizer.withDefaults());
         htp.httpBasic(Customizer.withDefaults());
         htp.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        htp.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
 
         return htp.build();

@@ -3,6 +3,7 @@ package com.example.backend.service;
 import com.example.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,16 +13,24 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    AuthenticationManager authManager;
+    private AuthenticationManager authManager;
+
+    @Autowired
+    private JWTService jwtService;
 
     public String verify(User user) {
-        Authentication auhtentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+        try {
+            Authentication authentication = authManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+            );
 
-        SecurityContextHolder.getContext().setAuthentication(auhtentication);
+            if (authentication.isAuthenticated()) {
+                return jwtService.generateToken(user.getUsername()); // Generate and return JWT token
+            }
+        } catch (BadCredentialsException e) {
+            throw new BadCredentialsException("Invalid username or password");
+        }
 
-        // Return a success message or any other response
-        return "Login Successful";
-
-
+        throw new BadCredentialsException("Authentication failed");
     }
 }

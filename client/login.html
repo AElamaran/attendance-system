@@ -9,24 +9,27 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="form-container">
+    <div class="container">
         <h2>Login</h2>
         <form id="login-form">
+            <!-- Username Field -->
             <div class="input-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" placeholder=" " required>
+                <label for="username">Username</label>
             </div>
+
+            <!-- Password Field -->
             <div class="input-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" placeholder=" " required>
+                <label for="password">Password</label>
             </div>
-            <button type="submit" id="login-btn">Login</button>
+
+            <!-- Login Button -->
+            <button type="submit">Login</button>
         </form>
         <p class="message" id="login-message"></p>
     </div>
-</div>
 
-<script src="script2.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>

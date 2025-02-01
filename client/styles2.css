@@ -23,36 +23,38 @@ body {
 /* Container */
 .container {
     background: white;
-    padding: 40px; /* Increased padding */
+    padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 100%;
-    max-width: 500px; /* Increased max-width */
+    max-width: 500px;
 }
 
 /* Headings */
 h2 {
-    margin-bottom: 25px; /* Slightly increased margin */
+    margin-bottom: 25px;
     font-weight: 600;
     color: #333;
-    font-size: 28px; /* Increased font size */
+    font-size: 28px;
 }
 
 /* Input Group */
 .input-group {
     position: relative;
-    margin: 20px 0; /* Increased margin */
+    margin: 20px 0;
 }
 
 input {
     width: 100%;
-    padding: 15px; /* Increased padding */
+    padding: 15px;
     border: 2px solid #ccc;
     border-radius: 6px;
-    font-size: 18px; /* Increased font size */
+    font-size: 18px;
     transition: 0.3s;
     outline: none;
+    background: transparent;
+    z-index: 1;
 }
 
 input:focus {
@@ -63,9 +65,21 @@ input:focus {
 /* Floating Labels */
 .input-group label {
     position: absolute;
-    top: 16px; /* Adjusted for larger input */
-    left: 15px; /* Adjusted for larger input */
-    font-size: 18px; /* Increased font size */
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
+    transition: 0.3s;
+    pointer-events: none;
+   
+}
+
+.input-group label span {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    font-size: 16px;
     color: #aaa;
     transition: 0.3s;
     pointer-events: none;
@@ -73,26 +87,26 @@ input:focus {
 
 input:focus + label,
 input:not(:placeholder-shown) + label {
-    top: -12px; /* Adjusted for larger input */
-    left: 12px; /* Adjusted for larger input */
-    font-size: 14px; /* Adjusted font size */
+    top: 0;
+    left: 12px;
+    font-size: 12px;
     color: #667eea;
-    background: white;
+    transform: translateY(0);
     padding: 0 5px;
 }
 
 /* Button */
 button {
     width: 100%;
-    padding: 15px; /* Increased padding */
+    padding: 15px;
     background: #667eea;
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 18px; /* Increased font size */
+    font-size: 18px;
     border-radius: 6px;
     transition: 0.3s;
-    margin-top: 20px; /* Added margin */
+    margin-top: 20px;
 }
 
 button:hover {
@@ -101,8 +115,8 @@ button:hover {
 
 /* Message */
 .message {
-    margin-top: 20px; /* Increased margin */
-    font-size: 16px; /* Increased font size */
+    margin-top: 20px;
+    font-size: 16px;
     color: #333;
 }
 
@@ -110,19 +124,19 @@ button:hover {
 @media (max-width: 600px) {
     .container {
         width: 90%;
-        padding: 30px; /* Adjusted padding for smaller screens */
+        padding: 30px;
     }
 
     h2 {
-        font-size: 24px; /* Adjusted font size for smaller screens */
+        font-size: 24px;
     }
 
     input, button {
-        font-size: 16px; /* Adjusted font size for smaller screens */
-        padding: 12px; /* Adjusted padding for smaller screens */
+        font-size: 16px;
+        padding: 12px;
     }
 
     .message {
-        font-size: 14px; /* Adjusted font size for smaller screens */
+        font-size: 14px;
     }
 }

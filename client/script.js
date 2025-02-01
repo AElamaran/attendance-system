@@ -15,7 +15,7 @@ form.addEventListener("submit", async function(event) {
         const student = { name, email };
         
         // Make API call to add student
-        const response = await fetch('YOUR_BACKEND_API_URL/students', {
+        const response = await fetch('localhost:8080/students', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

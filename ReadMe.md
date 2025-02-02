@@ -1,6 +1,6 @@
-## Attendance System
+# Attendance System
 
-# Backend- Spring Boot
+## Backend- Spring Boot
 
 * Use maria Db sql for database. So,use mariadb.jdbc
 * TO talk with database use jpa in repositories.

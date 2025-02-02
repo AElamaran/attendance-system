@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @Validated
-@CrossOrigin
 public class StudentController {
 
     private final StudentService service;
@@ -27,6 +26,7 @@ public class StudentController {
     }
 
     @GetMapping("/students")
+//    @CrossOrigin(origins = "http://localhost:5500")
     public ResponseEntity<CommonApiResponse<List<Student>>> getAllStudents() {
         List<Student> students = service.getAllStudents();
         return ResponseEntity.ok(new CommonApiResponse<>(200, "Students fetched successfully", students));
@@ -38,7 +38,7 @@ public class StudentController {
     }
 
 
-    @PostMapping
+    @PostMapping("/students")
     public ResponseEntity<CommonApiResponse<Student>> addStudent(@Valid @RequestBody Student student) {
         Student savedStudent = service.addStudent(student);
         return new ResponseEntity<>(new CommonApiResponse<>(201, "Student added successfully", savedStudent), HttpStatus.CREATED);

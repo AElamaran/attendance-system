@@ -18,6 +18,11 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -30,6 +35,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityfilterchain(HttpSecurity htp) throws Exception {
 
         htp.csrf(Customizer->Customizer.disable());
+//        htp.cors(cors -> cors.configurationSource(corsConfigurationSource()));
         htp.authorizeHttpRequests(request->request
                 .requestMatchers("/login")
                 .permitAll()
@@ -80,5 +86,7 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
+
+
 
 }

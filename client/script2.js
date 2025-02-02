@@ -34,7 +34,7 @@ form.addEventListener("submit", async function (event) {
                 
                 localStorage.setItem("jwt_token", data.token);
 
-                
+                alert("Login Successful!");
                 window.location.href = "Form.html"; 
                
                 loginMessage.textContent = "Invalid credentials, please try again.";
